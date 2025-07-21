@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Projects - Tech & Innovation Hub</title>
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Font Awesome CDN for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+    <!-- Header Section (Same as your index.html and services.html) -->
+    <header class="main-header">
+        <div class="container">
+            <div class="navbar">
+                <a href="index.html" class="brand">
+                    <img src="images/logo-placeholder.png" alt="Tech Innovation Hub Logo">
+                </a>
+                <div class="hamburger-menu" id="hamburger-menu">
+                    <i class="fas fa-bars"></i>
+                </div>
+                <ul class="nav-links" id="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="projects.html" class="active">Projects</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="careers.html">Careers</a></li> <!-- Updated link -->
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content for Projects Page -->
+    <main>
+        <section class="page-hero-section">
+            <div class="container">
+                <h1>Our Groundbreaking Projects</h1>
+                <p>Explore our portfolio of successful projects where innovation meets real-world impact. See how we've helped businesses thrive.</p>
+            </div>
+        </section>
+
+        <section class="projects-content-wrapper">
+            <div class="container">
+                <!-- Project Listing View (Initially Visible) -->
+                <div class="project-listing-view" id="project-listing-view">
+                    <div class="projects-grid-listing">
+                        <!-- Project items will be injected here by JavaScript -->
+                    </div>
+                </div>
+
+                <!-- Project Detail View (Initially Hidden) -->
+                <div class="project-detail-view hidden" id="project-detail-view">
+                    <button class="btn btn-primary-outline back-to-projects" id="back-to-projects-btn">
+                        <i class="fas fa-arrow-left"></i> Back to Projects
+                    </button>
+                    <div class="project-full-detail">
+                        <img src="" alt="Project Image" id="detail-project-image">
+                        <h2 id="detail-project-title"></h2>
+                        <p class="project-category" id="detail-project-category"></p>
+                        <div id="detail-project-content">
+                            <!-- Full content will be injected here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer Section (Same as your index.html and services.html) -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-about">
+                    <h3>Tech & Innovation Hub</h3>
+                    <p>Driving digital transformation through innovative AI, robust software, and compelling digital experiences.</p>
+                </div>
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="projects.html">Projects</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="careers.html">Careers</a></li> <!-- Updated link -->
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h3>Contact Us</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> 123 Tech Avenue, Innovation City, Somalia</p>
+                    <p><i class="fas fa-phone"></i> +252 6X 7Y 8Z</p>
+                    <p><i class="fas fa-envelope"></i> info@techinnovationhub.com</p>
+                </div>
+                <div class="footer-social">
+                    <h3>Follow Us</h3>
+                    <div class="social-icons-footer">
+                        <a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+                        <a href="#" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; <span id="current-year"></span> Tech & Innovation Hub. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript (Same as your index.html and services.html) -->
+    <script>
+        // Hamburger Menu JavaScript
+        document.addEventListener('DOMContentLoaded', function() {
+            const hamburgerMenu = document.getElementById('hamburger-menu');
+            const navLinks = document.getElementById('nav-links');
+
+            if (hamburgerMenu && navLinks) {
+                hamburgerMenu.addEventListener('click', function() {
+                    navLinks.classList.toggle('active');
+                });
+
+                navLinks.querySelectorAll('a').forEach(link => {
+                    link.addEventListener('click', function() {
+                        if (navLinks.classList.contains('active')) {
+                            navLinks.classList.remove('active');
+                        }
+                    });
+                });
+            }
+
+            // JavaScript for current year in footer
+            const currentYearSpan = document.getElementById('current-year');
+            if (currentYearSpan) {
+                currentYearSpan.textContent = new Date().getFullYear();
+            }
+
+            // --- Projects Page Dynamic Content Logic ---
+
+            // Project Data (Kani waa meesha aad ku kaydinayso dhammaan mashruucyadaada)
+            const projects = [
+                {
+                    id: 'ai-chatbot',
+                    title: 'AI-Powered Customer Support System',
+                    category: 'Artificial Intelligence, Software Development',
+                    image: 'images/project-ai-chatbot.png', // Updated to .png
+                    excerpt: 'Developed an intelligent chatbot solution for a leading e-commerce client, significantly reducing customer response times and improving satisfaction through advanced NLP.',
+                    fullContent: `
+                        <p>This project involved the development of a sophisticated AI-powered chatbot designed to enhance customer support for a major e-commerce platform. The goal was to provide instant, accurate responses to common customer inquiries, thereby reducing the workload on human agents and improving overall customer satisfaction.</p>
+                        <h3>Key Features:</h3>
+                        <ul>
+                            <li><strong>Natural Language Processing (NLP):</strong> The chatbot was built with advanced NLP capabilities to understand complex customer queries and intent.</li>
+                            <li><strong>Integration with CRM:</strong> Seamless integration with the client's existing Customer Relationship Management (CRM) system for personalized interactions.</li>
+                            <li><strong>24/7 Availability:</strong> Providing round-the-clock support, improving customer access to information.</li>
+                            <li><strong>Scalability:</strong> Designed to handle a high volume of concurrent conversations without performance degradation.</li>
+                            <li><strong>Feedback Loop:</strong> Implemented a system for continuous learning and improvement based on user interactions and feedback.</li>
+                        </ul>
+                        <p>The solution significantly improved customer service efficiency, reducing average response times by 70% and increasing customer satisfaction scores by 25% within the first six months of deployment.</p>
+                    `
+                },
+                {
+                    id: 'ecommerce-redesign',
+                    title: 'Responsive E-commerce Platform Redesign',
+                    category: 'UI/UX Design, Web Development',
+                    image: 'images/project-ecommerce.png', // Updated to .png
+                    excerpt: 'Revamped an outdated e-commerce website with a modern, user-friendly interface and optimized performance, leading to a 30% increase in conversion rates.',
+                    fullContent: `
+                        <p>Our team undertook a complete redesign and re-platforming of an existing e-commerce website that was struggling with outdated aesthetics, poor user experience, and slow performance. The primary objective was to create a modern, visually appealing, and highly functional online store that would boost sales and improve customer engagement.</p>
+                        <h3>Approach & Solutions:</h3>
+                        <ul>
+                            <li><strong>User Research & UX Strategy:</strong> Conducted extensive user research, including usability testing and competitor analysis, to identify pain points and opportunities for improvement.</li>
+                            <li><strong>Modern UI Design:</strong> Developed a fresh, intuitive, and visually appealing user interface with a focus on clear product presentation and easy navigation.</li>
+                            <li><strong>Responsive Development:</strong> Implemented a fully responsive design ensuring an optimal viewing and interaction experience across all devices (desktop, tablet, mobile).</li>
+                            <li><strong>Performance Optimization:</strong> Optimized images, code, and server-side rendering to drastically improve page load times.</li>
+                            <li><strong>Enhanced Checkout Flow:</strong> Streamlined the checkout process, reducing friction points and improving conversion rates.</li>
+                        </ul>
+                        <p>The redesigned platform resulted in a remarkable 30% increase in conversion rates, a 40% reduction in bounce rate, and overwhelmingly positive feedback from users regarding the improved shopping experience.</p>
+                    `
+                },
+                {
+                    id: 'erp-system',
+                    title: 'Custom ERP System for Manufacturing',
+                    category: 'Software Development, Cloud Solutions',
+                    image: 'images/project-erp-system.png', // Updated to .png
+                    excerpt: 'Engineered a tailored ERP system to manage complex supply chains and production processes for a large manufacturing company, enhancing operational efficiency.',
+                    fullContent: `
+                        <p>This project involved the development of a bespoke Enterprise Resource Planning (ERP) system for a large-scale manufacturing company. The client needed a comprehensive solution to integrate and manage various aspects of their operations, including production planning, inventory management, supply chain logistics, and financial reporting.</p>
+                        <h3>Key Modules Developed:</h3>
+                        <ul>
+                            <li><strong>Production Management:</strong> Tools for scheduling, tracking, and optimizing manufacturing processes.</li>
+                            <li><strong>Inventory Control:</strong> Real-time tracking of raw materials and finished goods across multiple warehouses.</li>
+                            <li><strong>Supply Chain Management:</strong> Streamlined procurement, vendor management, and logistics.</li>
+                            <li><strong>Financial Management:</strong> Integrated accounting, budgeting, and reporting functionalities.</li>
+                            <li><strong>Quality Control:</strong> Modules to ensure product quality and compliance with industry standards.</li>
+                        </ul>
+                        <p>The custom ERP system significantly improved operational efficiency by 20%, reduced inventory holding costs by 15%, and provided real-time visibility into all business processes, enabling data-driven decision-making and fostering sustainable growth for the manufacturing client.</p>
+                    `
+                },
+                {
+                    id: 'fitness-app',
+                    title: 'Intuitive Mobile Fitness Application',
+                    category: 'Mobile App Development, UI/UX Design',
+                    image: 'images/project-fitness-app.png', // Updated to .png
+                    excerpt: 'Designed and developed a cross-platform mobile app that offers personalized workout plans and progress tracking, achieving over 100,000 downloads in its first year.',
+                    fullContent: `
+                        <p>We developed a highly intuitive and engaging cross-platform mobile fitness application aimed at helping users achieve their health and wellness goals. The app provides personalized workout plans, nutrition tracking, and progress monitoring features, all within a sleek and user-friendly interface.</p>
+                        <h3>Features & Technologies:</h3>
+                        <ul>
+                            <li><strong>Personalized Workout Plans:</strong> AI-driven algorithms create customized workout routines based on user goals, fitness levels, and available equipment.</li>
+                            <li><strong>Nutrition Tracking:</strong> Users can log their food intake and track macronutrients and calories.</li>
+                            <li><strong>Progress Visualization:</strong> Interactive charts and graphs allow users to visualize their fitness journey and celebrate milestones.</li>
+                            <li><strong>Social Integration:</strong> Features for sharing achievements with friends and participating in fitness challenges.</li>
+                            <li><strong>Cross-Platform Development:</strong> Built using React Native (or similar) to ensure a consistent experience on both iOS and Android devices.</li>
+                        </ul>
+                        <p>The app quickly gained traction, surpassing 100,000 downloads in its first year and receiving high ratings on app stores, demonstrating its effectiveness in engaging users and supporting their fitness journeys.</p>
+                    `
+                },
+                {
+                    id: 'data-dashboard',
+                    title: 'Real-time Data Analytics Dashboard',
+                    category: 'Business Intelligence, Data Visualization',
+                    image: 'images/project-data-dashboard.png', // Updated to .png
+                    excerpt: 'Built a comprehensive dashboard for a financial institution, enabling real-time insights into market trends and customer behavior, facilitating data-driven decisions.',
+                    fullContent: `
+                        <p>This project focused on developing a powerful, real-time data analytics dashboard for a leading financial institution. The primary objective was to consolidate vast amounts of financial data into a single, intuitive interface, providing key stakeholders with immediate insights into market trends, customer behavior, and operational performance.</p>
+                        <h3>Dashboard Capabilities:</h3>
+                        <ul>
+                            <li><strong>Real-time Data Feeds:</strong> Integrated with various financial data sources to provide up-to-the-minute information.</li>
+                            <li><strong>Interactive Visualizations:</strong> Utilized advanced charting libraries to create dynamic and easy-to-understand graphs and reports.</li>
+                            <li><strong>Customizable Views:</strong> Users could tailor their dashboards to focus on specific metrics and data points relevant to their roles.</li>
+                            <li><strong>Predictive Modeling:</strong> Incorporated machine learning models to forecast market movements and identify potential risks.</li>
+                            <li><strong>Security & Access Control:</strong> Implemented robust security measures to ensure data confidentiality and integrity, with role-based access control.</li>
+                        </ul>
+                        <p>The dashboard revolutionized the client's decision-making process, enabling faster responses to market changes and a deeper understanding of customer needs. This led to more strategic investments and improved overall business outcomes.</p>
+                    `
+                }
+            ];
+
+            const projectListingView = document.getElementById('project-listing-view');
+            const projectDetailView = document.getElementById('project-detail-view');
+            const projectsGridListing = projectListingView.querySelector('.projects-grid-listing');
+            const backToProjectsBtn = document.getElementById('back-to-projects-btn');
+
+            const detailProjectImage = document.getElementById('detail-project-image');
+            const detailProjectTitle = document.getElementById('detail-project-title');
+            const detailProjectCategory = document.getElementById('detail-project-category');
+            const detailProjectContent = document.getElementById('detail-project-content');
+
+            // Function to render the list of projects
+            function renderProjectList() {
+                projectsGridListing.innerHTML = ''; // Clear previous content
+                projects.forEach(project => {
+                    const projectItem = document.createElement('div');
+                    projectItem.classList.add('project-item');
+                    projectItem.innerHTML = `
+                        <div class="project-image-wrapper">
+                            <img src="${project.image}" alt="${project.title}">
+                        </div>
+                        <div class="project-info-detail">
+                            <h3>${project.title}</h3>
+                            <p class="project-category">${project.category}</p>
+                            <p>${project.excerpt}</p>
+                            <button class="btn btn-primary-small view-details-btn" data-project-id="${project.id}">View Details</button>
+                        </div>
+                    `;
+                    projectsGridListing.appendChild(projectItem);
+                });
+
+                // Add event listeners to new "View Details" buttons
+                projectsGridListing.querySelectorAll('.view-details-btn').forEach(button => {
+                    button.addEventListener('click', function() {
+                        const projectId = this.dataset.projectId;
+                        showProjectDetail(projectId);
+                        // Update URL without reloading page
+                        history.pushState({ projectId: projectId }, '', `projects.html?project=${projectId}`);
+                    });
+                });
+            }
+
+            // Function to render a single project detail
+            function showProjectDetail(projectId) {
+                const project = projects.find(p => p.id === projectId);
+                if (project) {
+                    detailProjectImage.src = project.image;
+                    detailProjectImage.alt = project.title;
+                    detailProjectTitle.textContent = project.title;
+                    detailProjectCategory.textContent = project.category;
+                    detailProjectContent.innerHTML = project.fullContent;
+
+                    projectListingView.classList.add('hidden');
+                    projectDetailView.classList.remove('hidden');
+                    window.scrollTo({ top: 0, behavior: 'smooth' }); // Scroll to top
+                }
+            }
+
+            // Function to show the project list view
+            function showProjectListView() {
+                projectDetailView.classList.add('hidden');
+                projectListingView.classList.remove('hidden');
+                window.scrollTo({ top: 0, behavior: 'smooth' }); // Scroll to top
+            }
+
+            // Handle initial load and browser history (back/forward buttons)
+            function handleUrlChange() {
+                const urlParams = new URLSearchParams(window.location.search);
+                const projectId = urlParams.get('project');
+                if (projectId) {
+                    showProjectDetail(projectId);
+                } else {
+                    showProjectListView();
+                }
+            }
+
+            // Initial render
+            renderProjectList();
+            handleUrlChange(); // Check URL on initial load
+
+            // Event listener for Back to Projects button
+            backToProjectsBtn.addEventListener('click', function() {
+                showProjectListView();
+                history.pushState({}, '', 'projects.html'); // Update URL to base projects page
+            });
+
+            // Listen for browser's back/forward button clicks
+            window.addEventListener('popstate', function(event) {
+                handleUrlChange();
+            });
+        });
+
+        // Intersection Observer for scroll animations (Optional - if you want animations on projects page too)
+        // You might need to add 'hidden' class to relevant sections in projects.html
+        // const observer = new IntersectionObserver((entries) => {
+        //     entries.forEach((entry) => {
+        //         if (entry.isIntersecting) {
+        //             entry.target.classList.add('show');
+        //         } else {
+        //             // entry.target.classList.remove('show');
+        //         }
+        //     });
+        // }, {
+        //     threshold: 0.2,
+        //     rootMargin: '0px 0px -50px 0px'
+        // });
+        // const sectionsToAnimate = document.querySelectorAll(
+        //     '.page-hero-section, .project-item, .project-full-detail'
+        // );
+        // sectionsToAnimate.forEach((section) => {
+        //     section.classList.add('hidden');
+        //     observer.observe(section);
+        // });
+    </script>
+
+</body>
+</html>

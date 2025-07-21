@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Blog - Tech & Innovation Hub</title>
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Font Awesome CDN for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+    <!-- Header Section (Same as other pages) -->
+    <header class="main-header">
+        <div class="container">
+            <div class="navbar">
+                <a href="index.html" class="brand">
+                    <img src="images/logo-placeholder.png" alt="Tech Innovation Hub Logo">
+                </a>
+                <div class="hamburger-menu" id="hamburger-menu">
+                    <i class="fas fa-bars"></i>
+                </div>
+                <ul class="nav-links" id="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="projects.html">Projects</a></li>
+                    <li><a href="blog.html" class="active">Blog</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="careers.html">Careers</a></li> <!-- Updated link -->
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content for Blog Page -->
+    <main>
+        <section class="page-hero-section">
+            <div class="container">
+                <h1>Our Latest Insights & Articles</h1>
+                <p>Stay updated with the latest trends, expert opinions, and groundbreaking innovations in the tech world.</p>
+            </div>
+        </section>
+
+        <section class="blog-content-wrapper">
+            <div class="container">
+                <!-- Blog Listing View (Initially Visible) -->
+                <div class="blog-listing-view" id="blog-listing-view">
+                    <div class="blog-main-content">
+                        <!-- Blog posts will be injected here by JavaScript -->
+                    </div>
+                    <aside class="blog-sidebar">
+                        <div class="sidebar-widget">
+                            <h3>Recent Posts</h3>
+                            <ul id="recent-posts-list">
+                                <!-- Recent posts will be injected here by JavaScript -->
+                            </ul>
+                        </div>
+                        <div class="sidebar-widget">
+                            <h3>Categories</h3>
+                            <ul id="categories-list">
+                                <!-- Categories will be injected here by JavaScript -->
+                            </ul>
+                        </div>
+                    </aside>
+                </div>
+
+                <!-- Blog Post Detail View (Initially Hidden) -->
+                <div class="blog-post-detail-view hidden" id="blog-post-detail-view">
+                    <button class="btn btn-primary-outline back-to-blog" id="back-to-blog-btn">
+                        <i class="fas fa-arrow-left"></i> Back to Blog
+                    </button>
+                    <article class="blog-post-full-detail">
+                        <img src="" alt="Blog Post Image" id="detail-post-image">
+                        <div class="post-meta-detail">
+                            <span class="post-date" id="detail-post-date"><i class="far fa-calendar-alt"></i> </span>
+                            <span class="post-category" id="detail-post-category"><i class="fas fa-tag"></i> </span>
+                        </div>
+                        <h2 id="detail-post-title"></h2>
+                        <div id="detail-post-content">
+                            <!-- Full content will be injected here -->
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer Section (Same as other pages) -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-about">
+                    <h3>Tech & Innovation Hub</h3>
+                    <p>Driving digital transformation through innovative AI, robust software, and compelling digital experiences.</p>
+                </div>
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="projects.html">Projects</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="careers.html">Careers</a></li> <!-- Updated link -->
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h3>Contact Us</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> 123 Tech Avenue, Innovation City, Somalia</p>
+                    <p><i class="fas fa-phone"></i> +252 6X 7Y 8Z</p>
+                    <p><i class="fas fa-envelope"></i> info@techinnovationhub.com</p>
+                </div>
+                <div class="footer-social">
+                    <h3>Follow Us</h3>
+                    <div class="social-icons-footer">
+                        <a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+                        <a href="#" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; <span id="current-year"></span> Tech & Innovation Hub. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript (Same as other pages) -->
+    <script>
+        // Hamburger Menu JavaScript
+        document.addEventListener('DOMContentLoaded', function() {
+            const hamburgerMenu = document.getElementById('hamburger-menu');
+            const navLinks = document.getElementById('nav-links');
+
+            if (hamburgerMenu && navLinks) {
+                hamburgerMenu.addEventListener('click', function() {
+                    navLinks.classList.toggle('active');
+                });
+
+                navLinks.querySelectorAll('a').forEach(link => {
+                    link.addEventListener('click', function() {
+                        if (navLinks.classList.contains('active')) {
+                            navLinks.classList.remove('active');
+                        }
+                    });
+                });
+            }
+
+            // JavaScript for current year in footer
+            const currentYearSpan = document.getElementById('current-year');
+            if (currentYearSpan) {
+                currentYearSpan.textContent = new Date().getFullYear();
+            }
+
+            // --- Blog Page Dynamic Content Logic ---
+
+            // Blog Post Data (This is where you store all your blog posts)
+            const blogPosts = [
+                {
+                    id: 'ai-future',
+                    title: 'How AI is Reshaping the Business Landscape',
+                    date: 'July 15, 2025',
+                    category: 'Artificial Intelligence',
+                    image: 'images/blog-ai-future.png', // Ensure .png extension
+                    excerpt: 'Artificial Intelligence is no longer a futuristic concept; it\'s a present-day reality transforming industries globally. From automating mundane tasks to providing deep insights from vast datasets, AI is fundamentally changing how businesses operate and compete.',
+                    fullContent: `
+                        <p>Artificial Intelligence is no longer a futuristic concept; it's a present-day reality transforming industries globally. From automating mundane tasks to providing deep insights from vast datasets, AI is fundamentally changing how businesses operate and compete. This article delves into the key areas where AI is making the biggest impact.</p>
+                        <h3>AI in Automation and Efficiency</h3>
+                        <p>One of the most immediate benefits of AI in business is its ability to automate repetitive and time-consuming tasks. This includes everything from customer service chatbots handling routine inquiries to robotic process automation (RPA) streamlining back-office operations. By automating these processes, businesses can significantly reduce operational costs, minimize human error, and free up their workforce to focus on more strategic and creative initiatives.</p>
+                        <p>For example, in manufacturing, AI-powered robots can perform precision tasks with unparalleled accuracy and speed, leading to higher quality products and faster production cycles. In finance, AI algorithms can process vast amounts of data to automate fraud detection, credit scoring, and even algorithmic trading, providing insights that human analysts might miss.</p>
+                        <h3>Enhanced Decision-Making with Data Insights</h3>
+                        <p>AI's true power lies in its ability to process and analyze massive datasets at speeds impossible for humans. This capability translates into powerful predictive analytics and business intelligence. AI models can identify patterns, predict future trends, and offer actionable insights that help businesses make more informed decisions.</p>
+                        <ul>
+                            <li><strong>Predictive Analytics:</strong> Forecasting sales, identifying market trends, and predicting customer behavior.</li>
+                            <li><strong>Personalization:</strong> Delivering tailored product recommendations and marketing messages based on individual customer preferences.</li>
+                            <li><strong>Risk Management:</strong> Identifying potential financial risks or operational bottlenecks before they escalate.</li>
+                        </ul>
+                        <p>These insights allow companies to optimize their strategies, from marketing campaigns to supply chain management, leading to increased revenue and competitive advantage.</p>
+                        <h3>Revolutionizing Customer Experience</h3>
+                        <p>AI is also at the forefront of revolutionizing how businesses interact with their customers. AI-powered chatbots and virtual assistants provide 24/7 support, answer common questions, and even guide customers through complex processes, significantly improving response times and customer satisfaction.</p>
+                        <p>Beyond basic support, AI enables hyper-personalization of customer experiences. By analyzing past interactions and preferences, AI can deliver highly relevant content, product recommendations, and support, making each customer feel uniquely valued. This leads to stronger customer loyalty and increased engagement.</p>
+                        <h3>Challenges and the Road Ahead</h3>
+                        <p>While the benefits of AI are immense, its adoption also comes with challenges. These include the need for high-quality data, ethical considerations around data privacy and algorithmic bias, and the necessity for a skilled workforce capable of developing and managing AI systems. However, as AI technology continues to mature and become more accessible, its transformative impact on the business landscape will only continue to grow, making it an indispensable tool for future success.</p>
+                    `
+                },
+                {
+                    id: 'web-trends',
+                    title: 'Top Web Development Trends for 2025',
+                    date: 'July 10, 2025',
+                    category: 'Web Development',
+                    image: 'images/blog-web-trends.png', // Ensure .png extension
+                    excerpt: 'The web development landscape is constantly evolving, with new technologies and methodologies emerging rapidly. In 2025, we\'re seeing a strong emphasis on speed, interactivity, and immersive experiences.',
+                    fullContent: `
+                        <p>The web development landscape is constantly evolving, with new technologies and methodologies emerging rapidly. In 2025, we're seeing a strong emphasis on speed, interactivity, and immersive experiences. This article explores the most significant trends shaping the future of web development, from AI-powered interfaces to serverless architectures.</p>
+                        <h3>AI and Machine Learning in Web Development</h3>
+                        <p>AI is no longer confined to backend operations. We're seeing a surge in AI integration directly into web interfaces. This includes:</p>
+                        <ul>
+                            <li><strong>AI-powered chatbots:</strong> More sophisticated and human-like interactions.</li>
+                            <li><strong>Personalized user experiences:</strong> AI analyzing user behavior to customize content and recommendations.</li>
+                            <li><strong>Voice search optimization:</strong> Websites being built to be more compatible with voice assistants.</li>
+                        </ul>
+                        <p>This trend aims to make web applications more intelligent, intuitive, and adaptive to individual user needs.</p>
+                        <h3>Progressive Web Apps (PWAs)</h3>
+                        <p>PWAs continue to gain traction, blurring the lines between websites and native mobile applications. They offer:</p>
+                        <ul>
+                            <li><strong>Offline capabilities:</strong> Users can access content even without an internet connection.</li>
+                            <li><strong>Push notifications:</strong> Engaging users with timely updates.</li>
+                            <li><strong>Fast loading times:</strong> Providing a snappy, app-like experience.</li>
+                            <li><strong>Responsive Design:</strong> Adapting to various screen sizes and orientations.</li>
+                        </ul>
+                        <p>PWAs are becoming the go-to solution for businesses looking to provide a seamless experience across all devices without the need for separate app development.</p>
+                        <h3>Serverless Architecture</h3>
+                        <p>Serverless computing allows developers to build and run applications without managing servers. This trend is gaining popularity due to:</p>
+                        <ul>
+                            <li><strong>Reduced operational costs:</strong> Pay only for the compute time consumed.</li>
+                            <li><strong>Increased scalability:</strong> Applications automatically scale with demand.</li>
+                            <li><strong>Faster development cycles:</strong> Developers can focus on code, not infrastructure.</li>
+                        </ul>
+                        <p>While not suitable for every project, serverless is transforming how web applications are deployed and managed, especially for microservices and event-driven architectures.</p>
+                        <h3>WebAssembly (Wasm)</h3>
+                        <p>WebAssembly enables high-performance applications on the web by allowing code written in languages like C++, Rust, and Go to run in web browsers at near-native speeds. This opens up new possibilities for:</p>
+                        <ul>
+                            <li><strong>Complex gaming:</strong> Running sophisticated 3D games directly in the browser.</li>
+                            <li><strong>Image/video editing:</strong> Performing intensive tasks client-side.</li>
+                            <li><strong>Scientific simulations:</strong> Executing computationally heavy operations.</li>
+                        </ul>
+                        <p>Wasm is set to revolutionize web performance and expand the capabilities of browser-based applications.</p>
+                    `
+                },
+                {
+                    id: 'cybersecurity',
+                    title: 'Essential Cybersecurity Practices for SMEs',
+                    date: 'July 05, 2025',
+                    category: 'Cybersecurity',
+                    image: 'images/blog-cybersecurity.png', // Ensure .png extension
+                    excerpt: 'Small and Medium-sized Enterprises (SMEs) are increasingly becoming targets for cyberattacks. Protecting your business from digital threats is no longer optional; it\'s a necessity.',
+                    fullContent: `
+                        <p>Small and Medium-sized Enterprises (SMEs) are increasingly becoming targets for cyberattacks. Protecting your business from digital threats is no longer optional; it's a necessity. This guide outlines fundamental cybersecurity practices that every SME should implement to safeguard their data and operations.</p>
+                        <h3>1. Employee Training and Awareness</h3>
+                        <p>Your employees are often the first line of defense. Regular cybersecurity training can significantly reduce the risk of human error. Topics should include:</p>
+                        <ul>
+                            <li>Recognizing phishing emails and suspicious links.</li>
+                            <li>The importance of strong, unique passwords.</li>
+                            <li>Safe browsing habits and avoiding unsecured Wi-Fi networks.</li>
+                            <li>Reporting suspicious activities immediately.</li>
+                        </ul>
+                        <p>A well-informed workforce is crucial for maintaining a strong security posture.</p>
+                        <h3>2. Implement Strong Password Policies and Multi-Factor Authentication (MFA)</h3>
+                        <p>Weak or reused passwords are a major vulnerability. Enforce policies that require complex passwords and regular changes. More importantly, implement Multi-Factor Authentication (MFA) for all accounts, especially those with access to sensitive data.</p>
+                        <p>MFA adds an extra layer of security by requiring a second form of verification (e.g., a code from a mobile app or a fingerprint) in addition to the password, making it significantly harder for unauthorized users to gain access.</p>
+                        <h3>3. Regular Software Updates and Patch Management</h3>
+                        <p>Cybercriminals often exploit vulnerabilities in outdated software. Ensure all operating systems, applications, and security software are regularly updated with the latest patches. Automate updates whenever possible to minimize the risk of oversight.</p>
+                        <p>This includes not just your computers but also network devices, servers, and any other connected systems. Staying current with patches closes known security gaps that attackers could otherwise exploit.</p>
+                        <h3>4. Data Backup and Recovery Plan</h3>
+                        <p>Even with the best preventative measures, data breaches or system failures can occur. Implement a robust data backup strategy, ensuring that critical data is regularly backed up to a secure, off-site location. Test your recovery plan periodically to ensure you can quickly restore operations in the event of an incident.</p>
+                        <p>Having a solid backup and recovery plan is essential for business continuity and minimizing downtime after a cyberattack or disaster.</p>
+                        <h3>5. Network Security Measures</h3>
+                        <p>Protecting your network is paramount. This involves:</p>
+                        <ul>
+                            <li><strong>Firewalls:</strong> Configure firewalls to control incoming and outgoing network traffic.</li>
+                            <li><strong>Antivirus/Anti-malware:</strong> Install and regularly update reputable antivirus and anti-malware software on all devices.</li>
+                            <li><strong>Intrusion Detection/Prevention Systems (IDPS):</strong> Consider IDPS to monitor network traffic for suspicious activity.</li>
+                            <li><strong>Secure Wi-Fi:</strong> Use strong encryption (WPA2/WPA3) for your Wi-Fi networks and create separate networks for guests.</li>
+                        </ul>
+                        <p>By implementing these essential cybersecurity practices, SMEs can significantly strengthen their defenses against evolving cyber threats and protect their valuable assets.</p>
+                    `
+                }
+            ];
+
+            const blogListingView = document.getElementById('blog-listing-view');
+            const blogPostDetailView = document.getElementById('blog-post-detail-view');
+            const blogMainContent = blogListingView.querySelector('.blog-main-content');
+            const backToBlogBtn = document.getElementById('back-to-blog-btn');
+            const recentPostsList = document.getElementById('recent-posts-list');
+            const categoriesList = document.getElementById('categories-list');
+
+            const detailPostImage = document.getElementById('detail-post-image');
+            const detailPostDate = document.getElementById('detail-post-date');
+            const detailPostCategory = document.getElementById('detail-post-category');
+            const detailPostTitle = document.getElementById('detail-post-title');
+            const detailPostContent = document.getElementById('detail-post-content');
+
+            // Function to render the list of blog posts
+            function renderBlogList() {
+                blogMainContent.innerHTML = ''; // Clear previous content
+                blogPosts.forEach(post => {
+                    const article = document.createElement('article');
+                    article.classList.add('blog-post-full');
+                    article.innerHTML = `
+                        <img src="${post.image}" alt="${post.title}">
+                        <div class="post-meta">
+                            <span class="post-date"><i class="far fa-calendar-alt"></i> ${post.date}</span>
+                            <span class="post-category"><i class="fas fa-tag"></i> ${post.category}</span>
+                        </div>
+                        <h2>${post.title}</h2>
+                        <p>${post.excerpt}</p>
+                        <button class="btn btn-primary-small read-more-btn" data-post-id="${post.id}">Read More</button>
+                    `;
+                    blogMainContent.appendChild(article);
+                });
+
+                // Add event listeners to new "Read More" buttons
+                blogMainContent.querySelectorAll('.read-more-btn').forEach(button => {
+                    button.addEventListener('click', function() {
+                        const postId = this.dataset.postId;
+                        showBlogPostDetail(postId);
+                        // Update URL without reloading page
+                        history.pushState({ postId: postId }, '', `blog.html?post=${postId}`);
+                    });
+                });
+            }
+
+            // Function to render a single blog post detail
+            function showBlogPostDetail(postId) {
+                const post = blogPosts.find(p => p.id === postId);
+                if (post) {
+                    detailPostImage.src = post.image;
+                    detailPostImage.alt = post.title;
+                    detailPostDate.innerHTML = `<i class="far fa-calendar-alt"></i> ${post.date}`;
+                    detailPostCategory.innerHTML = `<i class="fas fa-tag"></i> ${post.category}`;
+                    detailPostTitle.textContent = post.title;
+                    detailPostContent.innerHTML = post.fullContent;
+
+                    blogListingView.classList.add('hidden');
+                    blogPostDetailView.classList.remove('hidden');
+                    window.scrollTo({ top: 0, behavior: 'smooth' }); // Scroll to top
+                }
+            }
+
+            // Function to show the blog list view
+            function showBlogListView() {
+                blogPostDetailView.classList.add('hidden');
+                blogListingView.classList.remove('hidden');
+                window.scrollTo({ top: 0, behavior: 'smooth' }); // Scroll to top
+            }
+
+            // Render Recent Posts in Sidebar
+            function renderRecentPosts() {
+                recentPostsList.innerHTML = '';
+                // Get top 5 recent posts (or fewer if less than 5)
+                const recent = blogPosts.slice(0, 5);
+                recent.forEach(post => {
+                    const li = document.createElement('li');
+                    const a = document.createElement('a');
+                    a.href = `blog.html?post=${post.id}`; // Use dynamic URL
+                    a.textContent = post.title;
+                    a.dataset.postId = post.id;
+                    a.classList.add('sidebar-post-link'); // Add class for event listener
+                    li.appendChild(a);
+                    recentPostsList.appendChild(li);
+                });
+
+                // Add event listeners to recent post links
+                recentPostsList.querySelectorAll('.sidebar-post-link').forEach(link => {
+                    link.addEventListener('click', function(e) {
+                        e.preventDefault(); // Prevent default link behavior
+                        const postId = this.dataset.postId;
+                        showBlogPostDetail(postId);
+                        history.pushState({ postId: postId }, '', `blog.html?post=${postId}`);
+                    });
+                });
+            }
+
+            // Render Categories in Sidebar
+            function renderCategories() {
+                categoriesList.innerHTML = '';
+                const categories = {};
+                blogPosts.forEach(post => {
+                    categories[post.category] = (categories[post.category] || 0) + 1;
+                });
+
+                for (const category in categories) {
+                    const li = document.createElement('li');
+                    const a = document.createElement('a');
+                    a.href = `blog.html?category=${encodeURIComponent(category)}`; // Example: filter by category
+                    a.textContent = `${category} (${categories[category]})`;
+                    li.appendChild(a);
+                    categoriesList.appendChild(li);
+                }
+            }
+
+            // Handle initial load and browser history (back/forward buttons)
+            function handleUrlChange() {
+                const urlParams = new URLSearchParams(window.location.search);
+                const postId = urlParams.get('post');
+                if (postId) {
+                    showBlogPostDetail(postId);
+                } else {
+                    showBlogListView();
+                }
+            }
+
+            // Initial render
+            renderBlogList();
+            renderRecentPosts();
+            renderCategories();
+            handleUrlChange(); // Check URL on initial load
+
+            // Event listener for Back to Blog button
+            backToBlogBtn.addEventListener('click', function() {
+                showBlogListView();
+                history.pushState({}, '', 'blog.html'); // Update URL to base blog page
+            });
+
+            // Listen for browser's back/forward button clicks
+            window.addEventListener('popstate', function(event) {
+                handleUrlChange();
+            });
+        });
+
+        // Intersection Observer for scroll animations (Optional - if you want animations on blog page too)
+        // You might need to add 'hidden' class to relevant sections in blog.html
+        // const observer = new IntersectionObserver((entries) => {
+        //     entries.forEach((entry) => {
+        //         if (entry.isIntersecting) {
+        //             entry.target.classList.add('show');
+        //         } else {
+        //             // entry.target.classList.remove('show');
+        //         }
+        //     });
+        // }, {
+        //     threshold: 0.2,
+        //     rootMargin: '0px 0px -50px 0px'
+        // });
+        // const sectionsToAnimate = document.querySelectorAll(
+        //     '.page-hero-section, .blog-post-full, .sidebar-widget, .blog-post-full-detail'
+        // );
+        // sectionsToAnimate.forEach((section) => {
+        //     section.classList.add('hidden');
+        //     observer.observe(section);
+        // });
+    </script>
+
+</body>
+</html>
